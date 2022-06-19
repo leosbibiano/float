@@ -16,5 +16,5 @@ jobs:
       with:
         server: ftp.float.app.br
         username: deploy@float.app.br
-        password: F@1f3float
+        password: F@1f3deploy
         server-dir: float/
