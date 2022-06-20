@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -20,11 +20,11 @@ jobs:
         server-dir: float/
 
     - name: Exec command SSH on server
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd /home1/floata76/float
-            composer install --no-dev --optimize-autoloader
-          host: float.app.br
-          user: floata76
-          pass: F@1f3float
+      uses: fifsky/ssh-action@master
+      with:
+        command: |
+          cd /home1/floata76/float
+          composer install --no-dev --optimize-autoloader
+        host: float.app.br
+        user: floata76
+        pass: F@1f3float
