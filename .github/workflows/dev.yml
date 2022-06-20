@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - maidevn
+name: 🚀 Deploy test website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: float.app.br
+        username: deploy@float.app.br
+        password: F@1f3deploy
+        server-dir: float_dev/
+
+    - name: Exec command SSH on server
+      uses: fifsky/ssh-action@master
+      with:
+        command: |
+          cd /home1/floata76/float_dev
+          composer install --no-dev --optimize-autoloader
+        host: float.app.br
+        user: floata76
+        pass: F@1f3float
