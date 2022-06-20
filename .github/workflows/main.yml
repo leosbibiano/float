@@ -18,3 +18,14 @@ jobs:
         username: deploy@float.app.br
         password: F@1f3deploy
         server-dir: float/
+
+    - name: Exec command SSH on server
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /home1/floata76/float
+            composer install --no-dev --optimize-autoloader
+          host: float.app.br
+          user: floata76
+          pass: F@1f3float
+
