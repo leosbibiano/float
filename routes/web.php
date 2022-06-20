@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'login', 'as' => 'login.'], function () {
+    Route::get('/sign-in', [LoginController::class, 'signIn'])->name('sign-in');
 });
