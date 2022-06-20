@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - maidevn
+      - dev
 name: 🚀 Deploy test website on push
 jobs:
   web-deploy:
