@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => 'login', 'as' => 'login.'], function () {
-    Route::get('/sign-in', [LoginController::class, 'signIn'])->name('sign-in');
+    Route::get('/', function(){
+        return 'Necessário entrar novamente!';
+    })->name('index');
+
+    Route::get('/registro-instancia', [LoginController::class, 'registroInstancia'])->name('registro-instancia');
+
+    Route::get('/sign-in', [LoginController::class, 'signIn'])->middleware('tenant')->name('sign-in');
+});
+
+Route::group(['prefix' => 'lilitu', 'as' => 'lilitu.'], function () {
+    Route::get('/teste', function(Request $request){
+        dd($request);
+    });
 });
